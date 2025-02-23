@@ -1,0 +1,11 @@
+
+.masterContent {
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 50px;
+    height: 500px;
+}
+.linkTag{
+    text-decoration: none;
+}

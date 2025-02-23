@@ -1,0 +1,106 @@
+.fees-container {
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.fees-title {
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Table */
+.fees-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.fees-table th,
+.fees-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.fees-table-header {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Buttons */
+.fees-button {
+    padding: 5px 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.fees-edit-button {
+    background-color: rgb(72, 0, 255);
+}
+
+.fees-delete-button {
+    background-color: #ff4d4d;
+}
+
+.fees-add-button {
+    margin-top: 10px;
+    background-color: rgb(3, 7, 11);
+    padding: 7px 15px;
+    font-size: 16px;
+}
+
+.fees-button:hover {
+    opacity: 0.8;
+}
+
+/* Modal */
+.fees-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fees-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+.fees-modal-input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.fees-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fees-save-button {
+    background-color: #28a745;
+}
+
+.fees-cancel-button {
+    background-color: #dc3545;
+}

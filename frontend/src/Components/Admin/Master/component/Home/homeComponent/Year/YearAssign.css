@@ -1,0 +1,25 @@
+.yearAssign{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25%;
+    height: 50vh;
+    gap: 20px;
+}
+#yearTitle{
+    color:rgb(21, 23, 23);
+    padding: 30px;
+}
+.yearButton{
+    background-color: rgb(107, 229, 246);
+    height: 30px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 50;
+    margin-left: 70%;
+}
+.yearOptions{
+    display: flex;
+    justify-content: space-between;
+}

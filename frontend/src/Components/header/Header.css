@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   background-color: aquamarine;
+  /* background-color: rgb(134, 212, 245);*/
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 98.5%;;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.headerSide {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70px;
+}
+
+.linkTag {
+    padding-right: 30px;
+    text-decoration: none;
+    color: black;
+    font-weight: 200;
+}
+
+#headTitle{
+    margin-top: 15px;
+}
+body {
+    padding-top: 70px;
+}
