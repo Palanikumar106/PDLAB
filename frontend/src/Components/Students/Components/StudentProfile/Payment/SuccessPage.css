@@ -1,0 +1,63 @@
+/* Full-page wrapper to ensure the success page is properly displayed */
+.success-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(40, 167, 69, 0.1); /* Light green background */
+}
+
+/* Success container box */
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: white;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Success icon */
+.success-icon {
+  font-size: 80px;
+  color: #28a745; /* Green success color */
+  margin-bottom: 15px;
+}
+
+/* Heading */
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #155724;
+}
+
+/* Message text */
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #155724;
+}
+
+/* Profile return link */
+.profile-link {
+  padding: 12px 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.profile-link:hover {
+  background-color: #0056b3;
+}

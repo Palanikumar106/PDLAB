@@ -1,29 +1,86 @@
+/* Sidebar.css */
 .sidebar {
-    width: 150px;
-    height: 668px;
-    position: fixed;
-    background-color: rgb(66, 62, 62);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  width: 220px;
+  height: calc(100vh - 70px); /* Account for header height */
+  position: fixed;
+  top: 70px; /* Position below header */
+  left: 0;
+  padding: 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 900; /* Lower than header */
+  overflow-y: auto; /* Allow scrolling if content is too tall */
 }
 
 .sideOptions {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sideTag {
-    text-decoration: none;
-    color: azure;
-    font-weight: 200;
-    padding-top: 50px;
-    padding-left: 30px;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.sideTag:hover {
+  background-color: #e9ecef;
+  color: #0056b3;
+}
+
+.sideTag svg {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.sideTag h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
 }
 
 #logOut {
-    padding: 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    position: absolute;
-    bottom: 0%;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto; /* Center the button and provide vertical spacing */
+  padding: 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: calc(100% - 40px); /* Make sure it respects margins */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+#logOut:hover {
+  background-color: #c82333;
+}
+
+#logOut svg {
+  margin-right: 8px;
+}
+
+/* Ensure main content is pushed to the right of sidebar */
+main {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+/* Add a container for the logout button to ensure proper spacing */
+.sidebar::after {
+  content: "";
+  height: 10px; /* Add some space after the logout button */
+  display: block;
 }

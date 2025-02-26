@@ -1,0 +1,65 @@
+.fees-management-container {
+  max-width: 800px;
+  margin: 20px auto;
+  /* padding: 20px; */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fees-section {
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+}
+
+.fees-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.fees-table th,
+.fees-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.fees-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.fees-table td input {
+  cursor: pointer;
+}
+
+.total-fees {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #d9534f;
+}
+
+.pay-fees-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.pay-fees-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pay-fees-btn:hover:not(:disabled) {
+  background-color: #218838;
+}
