@@ -6,9 +6,9 @@ import MasterCard from '../Card/MasterCard'
 import './MasterHome.css'
 import { Link, Outlet } from 'react-router-dom'
 const MasterHome = () => {
-    const imgArr = [dolar,smile,user]
-    const optArr=["Year","Header","Ledger"]
-    const path=["year","headType","feesType"]
+    const imgArr = [dolar,smile,user,smile]
+    const optArr=["Year","Header","Ledger","BankAccount"]
+    const path=["year","headType","ledgerType","bankAccount"]
   return (
       <div className='Home'>
           <div className='masterContent'>

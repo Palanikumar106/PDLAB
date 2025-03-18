@@ -1,5 +1,5 @@
-.ledger-container {
-    width: 50%;
+.bank-container {
+    width: 60%;
     margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -8,62 +8,63 @@
     text-align: center;
 }
 
-.ledger-title {
+.bank-title {
     margin-bottom: 15px;
     font-family: Arial, sans-serif;
     color: #333;
 }
 
 /* Table */
-.ledger-table {
+.bank-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 15px;
 }
 
-.ledger-table-header,
-.ledger-table-data {
+.bank-table th,
+.bank-table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
 }
 
-.ledger-table-header {
+.bank-table-header {
     background-color: #f2f2f2;
     font-weight: bold;
 }
 
 /* Buttons */
-.ledger-button {
+.bank-button {
     padding: 5px 10px;
     border: none;
     color: white;
     cursor: pointer;
     border-radius: 3px;
     font-size: 14px;
+    margin: 5px;
 }
 
-.ledger-edit-button {
-    background-color: #ffcc00;
-    margin-right: 5px;
+.bank-edit-button {
+    background-color: #007bff;
 }
 
-.ledger-delete-button {
+.bank-delete-button {
     background-color: #ff4d4d;
 }
 
-.ledger-add-button {
+.bank-add-button {
     margin-top: 10px;
-    background-color: #007bff;
+    background-color: #0056b3;
     padding: 7px 15px;
     font-size: 16px;
 }
 
-.ledger-button:hover {
+.bank-button:hover {
     opacity: 0.8;
 }
 
-.ledger-modal {
+/* Modal */
+.bank-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -75,7 +76,7 @@
     align-items: center;
 }
 
-.ledger-modal-content {
+.bank-modal-content {
     background: white;
     padding: 20px;
     border-radius: 5px;
@@ -83,7 +84,8 @@
     text-align: center;
 }
 
-.ledger-modal-input {
+.bank-modal-select,
+.bank-modal-input {
     width: 100%;
     padding: 8px;
     margin: 10px 0;
@@ -91,15 +93,15 @@
     border-radius: 3px;
 }
 
-.ledger-modal-buttons {
+.bank-modal-buttons {
     display: flex;
     justify-content: space-between;
 }
 
-.ledger-save-button {
+.bank-save-button {
     background-color: #28a745;
 }
 
-.ledger-cancel-button {
+.bank-cancel-button {
     background-color: #dc3545;
 }

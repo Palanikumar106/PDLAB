@@ -1,8 +1,11 @@
 import React from 'react'
+import LedgerHome from './component/Home/LedgerHome'
 
 const Ledger = () => {
   return (
-    <div className='Admin'>Ledger</div>
+    <div className='Admin'>
+      <LedgerHome/>
+    </div>
   )
 }
 

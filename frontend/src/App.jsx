@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Master from "./components/Admin/Master/Master";
-//import Ledger from "./components/Admin/Ledger/Ledger";
+
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -14,6 +13,8 @@ import Student from "./Components/Students/Student";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import SuccessPage from "./Components/Students/Components/StudentProfile/Payment/SuccessPage";
 import CancelPage from "./Components/Students/Components/StudentProfile/Payment/CancelPage";
+import Master from "./Components/Admin/Master/Master";
+import Ledger from "./Components/Admin/Ledger/Ledger";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleLogin = () => {
@@ -30,7 +31,7 @@ function App() {
           }
         />
         <Route path="/master" element={<Master />}></Route>
-        {/* <Route path="/ledger" element={<Ledger />}></Route> */}
+        <Route path="/ledger" element={<Ledger />}></Route>
         <Route path="/report" element={<Report />}></Route>
         <Route path="success" element={<SuccessPage />} />
         <Route path="cancel" element={<CancelPage />} />

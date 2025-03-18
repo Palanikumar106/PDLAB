@@ -1,5 +1,4 @@
 import React from "react";
-import "./SideBar.css";
 import { Link, Outlet } from "react-router-dom";
 const SideBar = () => {
   return (

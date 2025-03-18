@@ -99,7 +99,11 @@ export default function HeaderField() {
         </tbody>
       </table>
 
-      <button className="fees-button fees-add-button" onClick={() => setShowPopup(true)}>
+      <button className="fees-button fees-add-button" onClick={() =>{
+        setEditIndex(null);
+        setNewHeader("");
+        setShowPopup(true);
+      }}>
         + Add New Header
       </button>
 

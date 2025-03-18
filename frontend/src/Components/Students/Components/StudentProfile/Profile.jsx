@@ -21,7 +21,7 @@ const Profile = () => {
     };
 
     fetchStudentDetails();
-  }, []);
+  },[]);
 
   if (!student) {
     return <div>Loading...</div>;

@@ -60,6 +60,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
+  margin-top: 450px;
   width: calc(100% - 40px); /* Make sure it respects margins */
   box-sizing: border-box; /* Include padding in width calculation */
 }

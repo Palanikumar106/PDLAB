@@ -48,6 +48,7 @@ const getHeadFields=async(req,res)=>{
     }   
 }
 
+
 const deleteHead = async (req, res) => {
     try {
         const { head_name } = req.body;
@@ -72,6 +73,7 @@ const deleteHead = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 }
+
 
 const updateHead = async (req, res) => {
     try {

@@ -1,15 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import './LoginPageStyle.css'; // For custom styles (explained below)
+import './LoginPageStyle.css';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = ({onLogin}) => {
-  const navigate=useNavigate();
+const LoginPage = ({ onLogin }) => {
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = data => {
     onLogin();
+
     console.log(data);
+    if (data.email.startsWith('admin')) {
+      navigate('/');
+    } else {
+      navigate('/student');
+    }
   };
 
   return (
@@ -21,8 +27,11 @@ const LoginPage = ({onLogin}) => {
           <input
             id="email"
             type="email"
-            placeholder='Enter a Email'
-            {...register("email", { required: "Email is required", pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ })}
+            placeholder="Enter your email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+            })}
           />
           {errors.email && <span className="error">{errors.email.message}</span>}
         </div>
