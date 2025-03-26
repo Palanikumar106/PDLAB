@@ -130,7 +130,7 @@ const FeesAllotment = () => {
 
           <select name="ledger_name" value={formData.ledger_name} onChange={handleChange} className="input">
             <option value="">Select Ledger</option>
-            {ledgers.map((ledger) => <option key={ledger.ledger_id} value={ledger.ledger_name}>{ledger.ledger_name}</option>)}
+            {ledgers && ledgers.map((ledger) => <option key={ledger.ledger_id} value={ledger.ledger_name}>{ledger.ledger_name}</option>)}
           </select>
           {errors.ledger_name && <span className="error">{errors.ledger_name}</span>}
 

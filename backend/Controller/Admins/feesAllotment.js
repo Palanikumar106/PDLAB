@@ -27,9 +27,9 @@ const feesAllotController = async (req, res) => {
         const checkQuery = `SELECT COUNT(*) AS count FROM fees_allotment WHERE student_id = ? AND head_id = ? AND ledger_id = ?`;
         const checkResult = await queryAsync(checkQuery, [student_id, head_id, ledger_id]);
 
-        if (checkResult[0].count > 0) {
-            return res.status(409).json({ error: "Fees allotment for this student already exists" });
-        }
+        // if (checkResult[0].count > 0) {
+        //     return res.status(409).json({ error: "Fees allotment for this student already exists" });
+        // }
 
         const total_amount = parseFloat(fees_amount) + parseFloat(fine_amount);
 

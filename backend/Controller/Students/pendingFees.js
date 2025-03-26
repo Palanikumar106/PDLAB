@@ -8,13 +8,11 @@ const pendingFees = async (req, res) => {
 
   try {
     const query = `
-      SELECT f.student_id, f.fees_amount, l.ledger_name
+      SELECT f.student_id, f.fees_amount, l.ledger_name,f.Allotment_id
       FROM fees_allotment f
       JOIN fees_ledger l ON f.ledger_id = l.ledger_id
-      WHERE f.student_id = ?
+      WHERE f.student_id = ? and f.feeStatus='pending'
     `;
-
-    console.log("Executing SQL Query:", query, "with ID:", student_id);
 
     const rows = await new Promise((resolve, reject) => {
       db.query(query, [student_id], (err, rows) => {
@@ -28,10 +26,9 @@ const pendingFees = async (req, res) => {
       });
     });
 
-    if (rows.length === 0) {
-      console.log(" No pending fees found for student:", student_id);
-      return res.status(404).json({ error: "No pending fees found" });
-    }
+    // if (rows.length === 0) {
+    //   return res.status(404).json({ error: "No pending fees found" });
+    // }
 
     res.json(rows);
   } catch (err) {

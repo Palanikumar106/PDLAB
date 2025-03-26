@@ -1,5 +1,5 @@
-import React from 'react';
-import './MasterCard.css';
+import React from "react";
+import "./MasterCard.css";
 
 const MasterCard = ({ imges, options }) => {
   return (

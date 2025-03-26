@@ -13,7 +13,7 @@ const MasterHome = () => {
       <div className='Home'>
           <div className='masterContent'>
               {imgArr.map((img, index) => (
-                  <Link key={index} to={`/${path[index]}`} className='linkTag'><MasterCard imges={img} options={optArr[index]} /></Link>
+                  <Link key={index} to={`/admin/${path[index]}`} className='linkTag'><MasterCard imges={img} options={optArr[index]} /></Link>
               ))}
               </div>
             <Outlet/>

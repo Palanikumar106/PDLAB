@@ -25,10 +25,7 @@ const SideBar = () => {
           <FaHistory />
           <h3>History</h3>
         </Link>
-        <Link to="alerts" className="sideTag">
-          <FaBell />
-          <h3>Alerts</h3>
-        </Link>
+        
       </div>
 
       <button id="logOut">

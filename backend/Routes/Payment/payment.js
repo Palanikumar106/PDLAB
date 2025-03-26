@@ -4,5 +4,5 @@ const PaymentController = require("../../Controller/Payment/paymentController");
 const payment = express.Router();
 
 payment.post("/student/pay-fees", PaymentController.initializePayment);
-payment.get("/student/save-transaction", PaymentController.saveTransaction);
+payment.post("/student/save-transaction", PaymentController.saveTransaction);
 module.exports = payment;

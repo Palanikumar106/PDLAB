@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import React from "react";
-import "./CancelPage.css";
+//  import "./CancelPage.css";
 import { FaTimesCircle } from "react-icons/fa";
 
 const CancelPage = () => {

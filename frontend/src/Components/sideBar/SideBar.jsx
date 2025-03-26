@@ -4,13 +4,13 @@ const SideBar = () => {
   return (
     <div className="sidebar">
       <div className="sideOptions">
-        <Link to="/master" className="sideTag">
+        <Link to="/admin/master" className="sideTag">
           <h3>Master</h3>
         </Link>
-        <Link to="/ledger" className="sideTag">
+        <Link to="/admin/ledger" className="sideTag">
           <h3>Ledger</h3>
         </Link>
-        <Link to="/report" className="sideTag">
+        <Link to="/admin/report" className="sideTag">
           <h3>Report</h3>
         </Link>
       </div>

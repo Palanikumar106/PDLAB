@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import "./App.css";
-import Header from "./components/header/Header";
+// import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import Report from "./components/Admin/Report/Report";
 import LoginPage from "./Components/Login/LoginPage";
 import Admin from "./Components/Admin/Admin";
 import Student from "./Components/Students/Student";
@@ -22,24 +17,14 @@ function App() {
   };
   return (
     <BrowserRouter>
-      {isLoggedIn && <Header />}
+      
       <Routes>
-        <Route
-          path="/"
-          element={
-            isLoggedIn ? <Dashboard /> : <LoginPage onLogin={handleLogin} />
-          }
-        />
-        <Route path="/master" element={<Master />}></Route>
-        <Route path="/ledger" element={<Ledger />}></Route>
-        <Route path="/report" element={<Report />}></Route>
+        <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
         <Route path="success" element={<SuccessPage />} />
         <Route path="cancel" element={<CancelPage />} />
       </Routes>
       <Admin />
-      <Provider store={store}>
-        <Student />
-      </Provider>
+      <Student />
     </BrowserRouter>
   );
 }
