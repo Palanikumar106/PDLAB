@@ -35,8 +35,8 @@ const feesAllotController = async (req, res) => {
 
         const query = `
             INSERT INTO fees_allotment 
-            (Allotment_Id, student_id, ledger_id, head_id, fees_amount, total_amount, alloted_date, due_date, fine_amount, isPaid, due_extend1, fine_extend1, due_extend2, fine_extend2, due_extend3, fine_extend3, due_extend4, fine_extend4) 
-            VALUES (UUID(), ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?)`;
+            (Allotment_Id, student_id, ledger_id, head_id, fees_amount, total_amount, alloted_date, due_date, fine_amount, isPaid, due_extend1, fine_extend1, due_extend2, fine_extend2, due_extend3, fine_extend3, due_extend4, fine_extend4,feeStatus) 
+            VALUES (UUID(), ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?,'pending')`;
 
         await queryAsync(query, [student_id, ledger_id, head_id, fees_amount, total_amount, alloted_date, due_date, fine_amount, due_extend1 || null, fine_extend1 || 0, due_extend2 || null, fine_extend2 || 0, due_extend3 || null, fine_extend3 || 0, due_extend4 || null, fine_extend4 || 0]);
 

@@ -6,8 +6,9 @@ const {
 } = require("../../Controller/Students/studentDetails");
 const pendingFees = require("../../Controller/Students/pendingFees");
 const transactionHistory = require("../../Controller/Students/transactionHistory");
-app.get("/details", studentDetails);
-app.get("/details/:id", studentByID);
-app.get("/pending-fees/:id", pendingFees);
-app.get("/transactions/:student_id", transactionHistory);
+const { verifyToken } = require("../../miscellaneous/Verification");
+app.get("/details",verifyToken, studentDetails);
+app.get("/details/:id",verifyToken, studentByID);
+app.get("/pending-fees/:id",verifyToken, pendingFees);
+app.get("/transactions/:student_id",verifyToken, transactionHistory);
 module.exports = app;

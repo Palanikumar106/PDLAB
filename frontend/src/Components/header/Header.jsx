@@ -1,106 +1,118 @@
-// import React, { useState } from 'react'
-// import { CiUser } from "react-icons/ci";
-// import { FaListUl } from "react-icons/fa6";
-// import { Link } from 'react-router-dom';
-// import SideBar from '../sideBar/SideBar';
-
-// const Header = () => {
-//     const [click,assignClick]=useState(false);
-//     const sideBar=()=>{
-//         console.log(click);
-//         assignClick((prev)=>!prev);
-//     }
-//   return (
-//     <>
-//     <div className='header'>
-//           <Link onClick={sideBar}><FaListUl size={25} style={{marginTop:23,marginLeft:20}}/></Link>
-//           <h1 id="headTitle">Admin Portal</h1>
-//           <div className='headerSide'>
-//              <Link to="/" className='linkTag'><h3>Home</h3></Link>
-//               <Link><CiUser size={35}style={{marginRight:20}} /></Link>
-//           </div>
-//     </div>
-//     {(click)?<SideBar/>:<></>}
-//     </>
-//   )
-// }
-
-// export default Header
-// import React from "react";
-// import { CiUser } from "react-icons/ci";
-// import { FiLogOut } from "react-icons/fi";
-// import { Link } from "react-router-dom";
-
-// const Header = () => {
-//   return (
-//     <>
-//       <div className="flex justify-between items-center bg-blue-600 text-white h-16 fixed top-0 left-0 right-0 w-full px-5 z-50">
-//         <div className="w-1/4"></div>{" "}
-//         {/* Empty div to balance flex alignment */}
-//         <h1 className="text-xl font-bold text-center w-1/2">Admin Portal</h1>
-//         <div className="flex items-center space-x-6 w-1/4 justify-end">
-//           <Link to="/admin/master" className="text-white hover:text-yellow-400">
-//             Master
-//           </Link>
-//           <Link to="/admin/ledger" className="text-white hover:text-yellow-400">
-//             Ledger
-//           </Link>
-//           <Link to="/admin/report" className="text-white hover:text-yellow-400">
-//             Report
-//           </Link>
-//           <Link
-//             to="/admin/dashboard"
-//             className="text-white hover:text-yellow-400"
-//           >
-//             Home
-//           </Link>
-//           {/* <Link className="text-white hover:text-yellow-400">
-//             <CiUser size={35} />
-//           </Link> */}
-//           <Link to='/'>
-//             <button className="text-white hover:text-yellow-400 text-2xl">
-//               <FiLogOut />
-//             </button>
-//           </Link>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Header;
-
-
-
-
-import React from "react";
-import { CiUser } from "react-icons/ci";
-import { FiLogOut } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate(); // Hook for navigation
+
+  // Logout function
+  const handleLogout = () => {
+    localStorage.removeItem("role"); // Remove user role (or authentication token)
+    localStorage.removeItem("token"); // If using JWT token
+    sessionStorage.clear(); // Clear session storage if needed
+    console.log("Shan")
+    navigate("/"); // Redirect to login page
+  };
+
+
   return (
-    <div className="bg-blue-600 text-white fixed top-0 left-0 w-full h-16 flex justify-between items-center px-6 shadow-md z-50">
-      <h1 className="text-xl font-bold flex-1 text-center">Admin Portal</h1>
-      <div className="flex items-center space-x-6">
-        <Link to="/admin/master" className="hover:text-yellow-400">
+    <header className="bg-gradient-to-r from-blue-600 to-blue-500 text-white fixed top-0 left-0 w-full h-16 flex justify-between items-center px-6 shadow-lg z-50">
+      {/* Left: Hamburger Icon (Mobile) */}
+      <button
+        className="text-white text-2xl md:hidden focus:outline-none"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Center: Title */}
+      <h1 className="text-2xl font-extrabold flex-grow text-center md:text-left md:pl-8">
+        Admin Portal
+      </h1>
+
+      {/* Right: Navigation Links (Desktop) */}
+      <nav className="hidden md:flex items-center space-x-6">
+        <Link
+          to="/admin/master"
+          className="nav-link transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-lg font-bold hover:bg-yellow-500 hover:text-black hover:shadow-md hover:scale-105"
+        >
           Master
         </Link>
-        <Link to="/admin/ledger" className="hover:text-yellow-400">
+        <Link
+          to="/admin/ledger"
+          className="nav-link transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-lg font-bold hover:bg-green-500 hover:text-black hover:shadow-md hover:scale-105"
+        >
           Ledger
         </Link>
-        <Link to="/admin/report" className="hover:text-yellow-400">
+        <Link
+          to="/admin/report"
+          className="nav-link transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-lg font-bold hover:bg-pink-500 hover:text-black hover:shadow-md hover:scale-105"
+        >
           Report
         </Link>
-        <Link to="/" className="hover:text-yellow-400">
+        <Link
+          to="/admin/dashboard"
+          className="nav-link transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-lg font-bold hover:bg-orange-500 hover:text-black hover:shadow-md hover:scale-105"
+        >
           Home
         </Link>
-        <CiUser size={30} className="cursor-pointer hover:text-yellow-400" />
-        <button className="text-2xl hover:text-yellow-400">
-          <FiLogOut />
+        <button className="logout-btn transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-lg font-bold hover:bg-red-500 hover:text-black hover:shadow-md hover:scale-105" 
+         onClick={handleLogout}
+        >
+          Logout
         </button>
+      </nav>
+
+      {/* Mobile Menu with Slide-in Effect */}
+      <div
+        className={`fixed top-0 left-0 w-2/3 h-full bg-blue-700 shadow-lg transform ${menuOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 ease-in-out md:hidden`}
+      >
+        <button
+          className="absolute top-5 right-5 text-white text-2xl"
+          onClick={() => setMenuOpen(false)}
+        >
+          <FaTimes />
+        </button>
+        <nav className="flex flex-col space-y-6 py-20 text-center">
+          <Link
+            to="/admin/master"
+            className="mobile-link transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-xl font-bold hover:bg-yellow-500 hover:text-black hover:shadow-md hover:scale-105"
+            onClick={() => setMenuOpen(false)}
+          >
+            Master
+          </Link>
+          <Link
+            to="/admin/ledger"
+            className="mobile-link transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-xl font-bold hover:bg-green-500 hover:text-black hover:shadow-md hover:scale-105"
+            onClick={() => setMenuOpen(false)}
+          >
+            Ledger
+          </Link>
+          <Link
+            to="/admin/report"
+            className="mobile-link transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-xl font-bold hover:bg-pink-500 hover:text-black hover:shadow-md hover:scale-105"
+            onClick={() => setMenuOpen(false)}
+          >
+            Report
+          </Link>
+          <Link
+            to="/admin/dashboard"
+            className="mobile-link transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-xl font-bold hover:bg-orange-500 hover:text-black hover:shadow-md hover:scale-105"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <button
+            className="logout-btn mx-auto mt-4 transition-all duration-300 ease-in-out px-4 py-2 rounded-lg text-xl font-bold hover:bg-red-500 hover:text-black hover:shadow-md hover:scale-105"
+            onClick={() => setMenuOpen(false)}
+          >
+            Logout
+          </button>
+        </nav>
       </div>
-    </div>
+    </header>
   );
 };
 

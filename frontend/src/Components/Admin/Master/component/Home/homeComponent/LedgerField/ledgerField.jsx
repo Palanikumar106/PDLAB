@@ -1,101 +1,113 @@
-import React from "react";
-import { useState } from "react";
-import "./ledgerField.css";
+import React, { useState } from "react";
+
 const LedgerField = () => {
   const [ledgers, setLedgers] = useState(["Mess Fees", "Club Fees"]);
   const [newLedger, setNewLedger] = useState("");
   const [editIndex, setEditIndex] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-  const handleSaveLedger = () => {
-    if (!newLedger.trim()) return;
-
-    if (editIndex !== null) {
-      const updatedLedgers = [...ledgers];
-      updatedLedgers[editIndex] = newLedger;
-      setLedgers(updatedLedgers);
-    } else {
-      setLedgers([...ledgers, newLedger]);
-    }
-
-    setNewLedger("");
-    setEditIndex(null);
-    setShowPopup(false);
-  };
-
-  const handleEdit = (index) => {
-    setNewLedger(ledgers[index]);
-    setEditIndex(index);
-    setShowPopup(true);
-  };
-
-  const handleDelete = (index) => {
-    setLedgers(ledgers.filter((_, i) => i !== index));
-  };
-
   return (
-    <div className="ledger-container">
-      <h2 className="ledger-title">Ledger Management</h2>
+    <div className="bg-blue-200 min-h-screen flex flex-col items-center py-6">
 
-      <table className="ledger-table">
-        <thead>
-          <tr>
-            <th className="ledger-table-header">#</th>
-            <th className="ledger-table-header">Ledger Name</th>
-            <th className="ledger-table-header">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ledgers.map((ledger, index) => (
-            <tr key={index}>
-              <td className="ledger-table-data">{index + 1}</td>
-              <td className="ledger-table-data">{ledger}</td>
-              <td className="ledger-table-data">
-                <button
-                  className="ledger-button ledger-edit-button"
-                  onClick={() => handleEdit(index)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="ledger-button ledger-delete-button"
-                  onClick={() => handleDelete(index)}
-                >
-                  Delete
-                </button>
-              </td>
+      {/* Table Container - Moved Down */}
+      <div className="w-full max-w-5xl mt-30 bg-white p-6 rounded-lg shadow-lg">
+        <table className="w-full border-collapse border border-gray-300 bg-gray-50 shadow">
+          <thead className="bg-gray-700 text-white">
+            <tr>
+              <th className="py-4 px-6 text-left font-semibold border">S.No</th>
+              <th className="py-4 px-6 text-left font-semibold border">
+                Ledger Name
+              </th>
+              <th className="py-4 px-6 text-center font-semibold border">
+                Actions
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {ledgers.map((ledger, index) => (
+              <tr
+                key={index}
+                className="border-b hover:bg-gray-200 transition duration-200"
+              >
+                <td className="py-4 px-6 border">{index + 1}</td>
+                <td className="py-4 px-6 border break-words">{ledger}</td>
+                <td className="py-4 px-6 border text-center space-x-2">
+                  <button
+                    className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
+                    onClick={() => {
+                      setNewLedger(ledger);
+                      setEditIndex(index);
+                      setShowPopup(true);
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+                    onClick={() => setLedgers(ledgers.filter((_, i) => i !== index))}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
+      {/* Add Ledger Button */}
       <button
-        className="ledger-button ledger-add-button"
-        onClick={() => setShowPopup(true)}
+        className="bg-green-500 text-white px-6 py-3 mt-6 rounded font-semibold hover:bg-green-600 transition"
+        onClick={() => {
+          setNewLedger("");
+          setEditIndex(null);
+          setShowPopup(true);
+        }}
       >
         + Add Ledger
       </button>
 
+      {/* Popup Modal */}
       {showPopup && (
-        <div className="ledger-modal">
-          <div className="ledger-modal-content">
-            <h3>{editIndex !== null ? "Edit Ledger" : "Add Ledger"}</h3>
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40"
+          onClick={() => setShowPopup(false)}
+        >
+          <div
+            className="bg-white p-6 rounded-xl shadow-xl w-96"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-lg font-semibold mb-4 text-center">
+              {editIndex !== null ? "Edit Ledger" : "Add Ledger"}
+            </h3>
             <input
               type="text"
-              placeholder="Ledger Name"
-              className="ledger-modal-input"
+              placeholder="Enter ledger name"
+              className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={newLedger}
               onChange={(e) => setNewLedger(e.target.value)}
             />
-            <div className="ledger-modal-buttons">
+            <div className="flex justify-end gap-3 mt-5">
               <button
-                className="ledger-button ledger-save-button"
-                onClick={handleSaveLedger}
+                className="bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-600 transition"
+                onClick={() => {
+                  if (!newLedger.trim()) return;
+                  if (editIndex !== null) {
+                    const updatedLedgers = [...ledgers];
+                    updatedLedgers[editIndex] = newLedger;
+                    setLedgers(updatedLedgers);
+                  } else {
+                    setLedgers([...ledgers, newLedger]);
+                  }
+                  setNewLedger("");
+                  setEditIndex(null);
+                  setShowPopup(false);
+                }}
               >
                 {editIndex !== null ? "Update" : "Add"}
               </button>
               <button
-                className="ledger-button ledger-cancel-button"
+                className="bg-gray-400 text-white px-5 py-2 rounded hover:bg-gray-500 transition"
                 onClick={() => setShowPopup(false)}
               >
                 Cancel

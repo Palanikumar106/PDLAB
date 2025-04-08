@@ -84,14 +84,17 @@ import axios from "axios";
 import avengers from "../../../../assets/smile.jpg";
 import { useStudent } from "../../../Context/StudentContext";
 
+
 const Profile = () => {
   const { student, updateStudent } = useStudent();
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     const fetchStudentDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/students/details/2212049`
+          `http://localhost:3000/api/students/details/2212049`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         console.log("Student Data:", response.data);
         updateStudent(response.data);
