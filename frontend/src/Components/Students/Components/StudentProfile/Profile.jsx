@@ -90,10 +90,12 @@ const Profile = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const StudentId = localStorage.getItem('StudentId');
     const fetchStudentDetails = async () => {
       try {
+        //const studentId = decoded.email;
         const response = await axios.get(
-          `http://localhost:3000/api/students/details/2212049`,
+          `http://localhost:3000/api/students/details/${StudentId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         console.log("Student Data:", response.data);

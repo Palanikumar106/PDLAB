@@ -1,7 +1,6 @@
-const mysqlConnection = require('../config/mysqlConfig')
+const mysqlConnection = require('../config/mysqlConfig');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-
 
 const LoginController = (req, res) => {
     const { email, dob } = req.body;
@@ -10,7 +9,13 @@ const LoginController = (req, res) => {
         return res.status(400).json({ message: 'Email and Date of Birth are required' });
     }
 
-    const query = 'SELECT email, role FROM users WHERE email = ? AND dob = ?';
+    const isAdmin = email.toLowerCase().startsWith("admin");
+    const role = isAdmin ? "admin" : "student";
+
+    const query = isAdmin
+        ? 'SELECT email AS id FROM users WHERE email= ? AND dob = ?'
+        : 'SELECT Student_id as id FROM student_information WHERE Student_id = ? AND dob = ?';
+
     mysqlConnection.query(query, [email, dob], (err, results) => {
         if (err) {
             console.error("Database error:", err);
@@ -24,15 +29,14 @@ const LoginController = (req, res) => {
         const user = results[0];
 
         // Generate JWT Token
-        //console.log("hi",process.env.SECRET_KEY)
         const token = jwt.sign(
-            { email: user.email, role: user.role },
+            { email: user.id, role },
             process.env.SECRET_KEY || 'default_secret',
             { expiresIn: '1h' }
         );
 
-        res.json({ token, role: user.role });
+        res.json({ token, role,email });
     });
 };
 
-module.exports =LoginController;
+module.exports = LoginController;

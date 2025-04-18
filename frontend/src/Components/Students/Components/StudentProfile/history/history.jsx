@@ -102,6 +102,7 @@ const History = () => {
   const [transactions, setTransactions] = useState([]);
   const [error, setError] = useState("");
   const token = localStorage.getItem('token')
+  const StudentId = localStorage.getItem('StudentId')
 
   useEffect(() => {
     fetchTransactions();
@@ -111,7 +112,7 @@ const History = () => {
     setError("");
     try {
       const response = await axios.get(
-              `http://localhost:3000/api/students/transactions/${student.Student_Id}`,
+              `http://localhost:3000/api/students/transactions/${StudentId}`,
 
               { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -158,7 +159,7 @@ const History = () => {
 
       // Right column
       doc.text(`Student ID: ${student.Student_Id}`, 120, 60);
-      doc.text(`Student Name: ${student.name}`, 120, 65);
+      doc.text(`Student Name: ${student.Student_Name}`, 120, 65);
 
       // Payment details table with modern styling
       autoTable(doc, {

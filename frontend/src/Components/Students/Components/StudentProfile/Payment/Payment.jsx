@@ -9,13 +9,14 @@ function Payment() {
   const [totalFees, setTotalFees] = useState(0);
   const { student } = useStudent();
   const token = localStorage.getItem('token');
+  const StudentId=localStorage.getItem('StudentId');
 
   useEffect(() => {
     const fetchPendingFees = async () => {
       try {
         console.log(student)
         const response = await axios.get(
-          `/api/students/pending-fees/${student.Student_Id}`,
+          `/api/students/pending-fees/${StudentId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (response.data.length) {

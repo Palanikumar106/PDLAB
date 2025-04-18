@@ -15,7 +15,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { student } = useStudent();
   const navigate = useNavigate();
-
+ const studentId = localStorage.getItem("StudentId");
   const handleLogout = () => {
     localStorage.removeItem("role");
     localStorage.removeItem("token");
@@ -27,7 +27,7 @@ const Header = () => {
     <div className="bg-blue-600 text-white fixed top-0 left-0 w-full h-16 flex items-center justify-between px-6 shadow-md z-50">
       {/* Logo / Title */}
       <h1 className="text-xl font-bold">
-        {student.Student_Name} - {student.Student_Id}
+        {student.Student_Name}  {studentId}
       </h1>
 
       {/* Navbar Links (Desktop) */}

@@ -15,10 +15,11 @@ const LoginPage = ({ onLogin }) => {
     onLogin();
     const response = await axios.post('/api/login', data);
 
-    const { token, role } = response.data;
+    const { token, role,email } = response.data;
     console.log(role);
     localStorage.setItem('token', token);
     localStorage.setItem('role', role);
+    localStorage.setItem('StudentId', email);
     if (data.email.startsWith("admin")) {
       navigate("/admin/dashboard");
     } else {
@@ -36,19 +37,15 @@ const LoginPage = ({ onLogin }) => {
           {/* Email Field */}
           <div className="space-y-2">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email Address
+              Student ID
             </label>
             <input
               id="email"
-              type="email"
-              placeholder="Enter your email"
+              type="text"
+              placeholder="Enter your Student ID"
               className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 text-gray-900 placeholder-gray-400"
               {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-                  message: "Invalid email address",
-                },
+                required: "StudentID is required",
               })}
             />
             {errors.email && (

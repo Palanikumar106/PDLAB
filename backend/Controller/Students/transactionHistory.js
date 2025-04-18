@@ -2,10 +2,19 @@ const db = require("../../config/mysqlConfig");
 
 const transactionHistory = async (req, res) => {
   const { student_id } = req.params;
-  console.log(student_id);
+  const loggedInId = req.user?.email;
+
+
+  if (loggedInId != student_id) {
+    return res.status(403).json({ message: "Access Denied: You can only view your own transaction history" });
+  }
+
   try {
     db.query(
-      "SELECT Transaction_Id, feestype, amount,transaction_time,feesName FROM transaction WHERE student_id = ? order by transaction_time",
+      `SELECT Transaction_Id, feestype, amount, transaction_time, feesName
+       FROM transaction
+       WHERE student_id = ?
+       ORDER BY transaction_time DESC`,
       [student_id],
       (err, results) => {
         if (err) {
@@ -14,13 +23,11 @@ const transactionHistory = async (req, res) => {
         }
 
         if (results.length === 0) {
-          return res
-            .status(404)
-            .json({ message: "No transactions found for this student" });
+          return res.status(404).json({ message: "No transactions found for this student" });
         }
-        console.log(results);
+
         res.json(results);
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching transaction history:", error);
